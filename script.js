@@ -18,7 +18,7 @@ const playerCardData = {
         imageUrl: 'http://cdn-1.webcatalog.io/catalog/tellonym/tellonym-icon-filled-256.png?v=1736131175564', // Replace with your image URL
         description: '',
         buttonText: 'Tellonym',
-        buttonLink: 'https://tellonym.me/yourusername' // Replace with your link
+        buttonLink: 'https://tellonym.me/SHINv' // Replace with your link
     },
     Instagram: {
         imageUrl: 'https://cdn2.iconfinder.com/data/icons/social-icons-33/128/Instagram-512.png', // Replace with your image URL
