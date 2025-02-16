@@ -7,7 +7,22 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="profile-card" id="mainProfileCard">
+  <!-- Background Video -->
+  <video autoplay muted loop id="backgroundVideo">
+    <source src="videoBG.mp4" type="video/mp4"> 
+    Your browser does not support the video tag.
+  </video>
+  <audio id="backgroundMusic" loop>
+    <source src="songBG.mp3" type="audio/mpeg"> 
+    Your browser does not support the audio tag.
+</audio>
+  <div id="startView" class="start-view">
+    <h1 class="start-text">Click to enter...</h1>
+  </div>
+
+  <div class="overlay"></div> <!-- Dark overlay -->
+
+  <div class="profile-card" id="mainProfileCard" style="display: none;">
     <img src="pic.jpg" alt="Profile Photo" class="profile-photo">
     <h1 class="profile-name">SHIN</h1>
     <p class="profile-description">Software Developer | Tech Enthusiast | Gamer</p>
