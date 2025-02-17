@@ -1,90 +1,82 @@
 body {
-    overflow: hidden; 
+    overflow: hidden;
     font-family: 'Arial', sans-serif;
     margin: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative; 
+    position: relative;
 }
-.dark-background {
-    position: fixed; /* Position it fixed to cover the entire viewport */
-    top: 0;
-    left: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay (50% opacity) */
-    z-index: 1; /* Ensure it is above the video but below the player card */
-    display: none; /* Initially hidden */
-}
+
 #backgroundVideo {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     z-index: -1;
 }
 
 .start-view {
     position: relative;
-    z-index: 1; 
+    z-index: 2; /* Higher than the overlay */
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     font-size: 24px;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .overlay {
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0, 0, 0, 0.85); 
-    z-index: 0; 
-    backdrop-filter: blur(5px); 
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 1;
+    backdrop-filter: blur(5px);
+    pointer-events: none; /* Allow clicks to pass through */
 }
 
 .profile-card {
-    background-color: rgba(255, 255, 255, 0.8); 
-    border: 2px solid white; 
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid white;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
     max-width: 300px;
-    transition: transform 0.5s ease; 
-    transform: translateY(100%); 
-    display: none; 
+    transition: transform 0.5s ease;
+    transform: translateY(100%);
+    display: none;
 }
 
 .profile-card.show {
-    transform: translateY(0); 
+    transform: translateY(0);
 }
 
 .new-profile-card {
-    background-color: rgba(255, 255, 255, 0.8); 
-    border: 2px solid white; 
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid white;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
     max-width: 300px;
     overflow: hidden;
-    transition: max-height 0.5s ease, opacity 0.5s ease; 
-    max-height: 0; 
-    opacity: 0; 
-    display: block; 
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    max-height: 0;
+    opacity: 0;
+    display: block;
 }
 
 .new-profile-card.show {
-    max-height: 500px; 
-    opacity: 1; 
+    max-height: 500px;
+    opacity: 1;
 }
 
 .profile-photo {
@@ -148,24 +140,24 @@ body {
 }
 
 .start-text {
-    animation: sparkle 1.5s infinite alternate; 
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 
-                 0 0 10px rgba(255, 255, 255, 0.6), 
-                 0 0 15px rgba(255, 255, 255, 0.4), 
+    animation: sparkle 1.5s infinite alternate;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+                 0 0 10px rgba(255, 255, 255, 0.6),
+                 0 0 15px rgba(255, 255, 255, 0.4),
                  0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 @keyframes sparkle {
     0% {
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 
-                     0 0 10px rgba(255, 255, 255, 0.6), 
-                     0 0 15px rgba(255, 255, 255, 0.4), 
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+                     0 0 10px rgba(255, 255, 255, 0.6),
+                     0 0 15px rgba(255, 255, 255, 0.4),
                      0 0 20px rgba(255, 255, 255, 0.2);
     }
     100% {
-        text-shadow: 0 0 10px rgba(255, 255, 255, 1), 
-                     0 0 20px rgba(255, 255, 255, 0.8), 
-                     0 0 30px rgba(255, 255, 255, 0.6), 
+        text-shadow: 0 0 10px rgba(255, 255, 255, 1),
+                     0 0 20px rgba(255, 255, 255, 0.8),
+                     0 0 30px rgba(255, 255, 255, 0.6),
                      0 0 40px rgba(255, 255, 255, 0.4);
     }
 }
