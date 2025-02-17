@@ -102,12 +102,12 @@ body {
 .profile-name {
     font-size: 24px;
     margin: 10px 0;
-    color: #333;
+    color: #f9f9f9;
 }
 
 .profile-description {
     font-size: 14px;
-    color: #666;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
