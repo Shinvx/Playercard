@@ -12,7 +12,7 @@ const playerCardData = {
         imageUrl: 'images/riot-games-logo.png', // Local image for Riot Games
         description: 'Welcome to my Riot Games profile!',
         buttonText: 'Riot Games',
-        buttonLink: 'riot.html'
+        buttonLink: 'page/riot.html'
     },
     Tellonym: {
         imageUrl: 'images/tello.png', // Local image for Tellonym
