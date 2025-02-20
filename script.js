@@ -3,25 +3,25 @@ let currentCard = null;
 
 const playerCardData = {
     Steam: {
-        imageUrl: 'https://cdn3.iconfinder.com/data/icons/social-media-2169/24/social_media_social_media_logo_steam-512.png',
+        imageUrl: 'images/steam.png', // Local image for Steam
         description: 'Welcome to my Steam profile! Feel free to add me, but no VAC bans.',
         buttonText: 'Steam',
         buttonLink: 'https://steamcommunity.com/id/Sh1nv/'
     },
-    Snapchat: {
-        imageUrl: 'https://cdn2.iconfinder.com/data/icons/social-media-applications/64/social_media_applications_7-snapchat-512.png',
-        description: '',
-        buttonText: 'Snapchat',
-        buttonLink: 'https://www.snapchat.com/add/dnie.wu?share_id=SnJV5OzPnU8&locale=de-DE'
+    RiotGames: {
+        imageUrl: 'images/riot-games-logo.png', // Local image for Riot Games
+        description: 'Welcome to my Riot Games profile!',
+        buttonText: 'Riot Games',
+        buttonLink: 'riot.html'
     },
     Tellonym: {
-        imageUrl: 'http://cdn-1.webcatalog.io/catalog/tellonym/tellonym-icon-filled-256.png?v=1736131175564',
+        imageUrl: 'images/tello.png', // Local image for Tellonym
         description: '',
         buttonText: 'Tellonym',
         buttonLink: 'https://tellonym.me/shinv'
     },
     Instagram: {
-        imageUrl: 'https://cdn2.iconfinder.com/data/icons/social-icons-33/128/Instagram-512.png',
+        imageUrl: 'images/insta.png', // Local image for Instagram
         description: '',
         buttonText: 'Instagram',
         buttonLink: 'https://www.instagram.com/shn.dnie/'
@@ -67,55 +67,37 @@ document.getElementById('startView').addEventListener('click', function() {
     document.querySelector('.overlay').style.display = 'none'; 
     this.style.display = 'none'; 
 
-    const profileCard = document.getElementById('mainProfileCard');
-    profileCard.style.display = 'block';
+    const profileContainer = document.getElementById('profileContainer');
+    profileContainer.style.display = 'block';
 
- 
     const backgroundMusic = document.getElementById('backgroundMusic');
     backgroundMusic.volume = 0.3; 
     backgroundMusic.play();
 
-  
     setTimeout(() => {
-        profileCard.classList.add('show'); 
+        profileContainer.classList.add('show'); 
     }, 10); 
 });
 
-
-document.querySelectorAll('.social-link').forEach(link => {
-    link.addEventListener('click', function(event) {
-        event.preventDefault(); 
-
+document.querySelectorAll('.social-button').forEach(button => {
+    button.addEventListener('click', function(event) {
+        // No need to prevent default since we want to follow the link
         const platform = this.getAttribute('data-platform');
-
-        const newCard = document.createElement('div');
-        newCard.className = 'new-profile-card';
         const data = playerCardData[platform];
 
-        newCard.innerHTML = `
-            <img src="${data.imageUrl}" alt="${platform} Player Photo" class="profile-photo">
-            <h1 class="profile-name">${platform}</h1>
-            <p class="profile-description">${data.description}</p>
-            <a href="${data.buttonLink}" target="_blank" class="social-link" style="background-color: ${window.getComputedStyle(this).backgroundColor};">${data.buttonText}</a>
-        `;
-
-        if (currentCard) {
-            currentCard.classList.remove('show'); 
-            setTimeout(() => {
-                currentCard.remove(); 
-                openNewCard(newCard); 
-            }, 500); 
-        } else {
-            openNewCard(newCard);
+        // Check if data is defined
+        if (!data) {
+            console.error(`No data found for platform: ${platform}`);
+            return; // Exit the function if data is not found
         }
+
+        // Open the link directly
+        window.open(data.buttonLink, '_blank'); // Open the link in a new tab
     });
 });
 
 function openNewCard(newCard) {
-    
     document.getElementById('playerCardsContainer').appendChild(newCard);
-
-
     setTimeout(() => {
         newCard.classList.add('show'); 
         currentCard = newCard; 
