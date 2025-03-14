@@ -8,29 +8,29 @@ const profilePhoto = document.querySelector('.profile-photo');
 profileCard.addEventListener('mousemove', (e) => {
   const { offsetWidth, offsetHeight } = profileCard;
   const rect = profileCard.getBoundingClientRect();
-  const x = e.clientX - rect.left; // Mouse X position relative to the card
-  const y = e.clientY - rect.top;  // Mouse Y position relative to the card
+  const x = e.clientX - rect.left; 
+  const y = e.clientY - rect.top;  
 
-  // Calculate the center of the card
+  
   const centerX = offsetWidth / 2;
   const centerY = offsetHeight / 2;
 
-  // Calculate the distance from the center
-  const deltaX = (x - centerX) / centerX; // Normalize to -1 to 1
-  const deltaY = (y - centerY) / centerY; // Normalize to -1 to 1
+  
+  const deltaX = (x - centerX) / centerX; 
+  const deltaY = (y - centerY) / centerY; 
 
-  // Calculate tilt angles
-  const tiltX = deltaY * 10; // Adjust the multiplier for tilt sensitivity
-  const tiltY = -deltaX * 10; // Adjust the multiplier for tilt sensitivity
+  
+  const tiltX = deltaY * 10; 
+  const tiltY = -deltaX * 10; 
 
-  // Apply the tilt transformation
-  profileCard.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.05)`; // Scale up while tilting
+  
+  profileCard.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.05)`; 
   profilePhoto.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
 });
 
-// Reset the tilt and scale when the mouse leaves the profile card
+
 profileCard.addEventListener('mouseleave', () => {
-  profileCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)'; // Reset to original size
+  profileCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)'; 
   profilePhoto.style.transform = 'rotateX(0deg) rotateY(0deg)';
 });
 
@@ -47,30 +47,30 @@ muteButton.addEventListener('click', function() {
     }
 });
 const playerCardData = {
-    Steam: {
-        imageUrl: 'images/steam.png', 
-        description: 'Welcome to my Steam profile! Feel free to add me, but no VAC bans.',
-        buttonText: 'Steam',
-        buttonLink: 'https://steamcommunity.com/id/Sh1nv/'
-    },
-    RiotGames: {
-        imageUrl: 'images/riot-games-logo.png',
-        description: 'Welcome to my Riot Games profile!',
-        buttonText: 'Riot Games',
-        buttonLink: 'https://shinvx.github.io/riotPage/'
-    },
-    Tellonym: {
-        imageUrl: 'images/tello.png',
-        description: '',
-        buttonText: 'Tellonym',
-        buttonLink: 'https://tellonym.me/shinv'
-    },
-    Instagram: {
-        imageUrl: 'images/insta.png', 
-        description: '',
-        buttonText: 'Instagram',
-        buttonLink: 'https://www.instagram.com/shn.dnie/'
-    }
+  Steam: {
+      imageUrl: 'images/steam.png', 
+      description: 'Welcome to my Steam profile! Feel free to add me, but no VAC bans.',
+      buttonText: 'Steam',
+      buttonLink: 'https://steamcommunity.com/id/Sh1nv/'
+  },
+  RiotGames: {
+      imageUrl: 'images/riot-games-logo.png',
+      description: 'Welcome to my Riot Games profile!',
+      buttonText: 'Riot Games',
+      buttonLink: 'https://shinvx.github.io/riotPage/'
+  },
+  Tellonym: {
+      imageUrl: 'images/tello.png',
+      description: '',
+      buttonText: 'Tellonym',
+      buttonLink: 'https://tellonym.me/shinv'
+  },
+  Instagram: {
+      imageUrl: 'images/insta.png', 
+      description: '',
+      buttonText: 'Instagram',
+      buttonLink: 'https://www.instagram.com/shn.dnie/'
+  }
 };
 
 function typeEffect(text, delay) {
@@ -105,28 +105,28 @@ document.getElementById('startView').addEventListener('click', function() {
   const overlay = document.querySelector('.overlay');
   const profileContainer = document.getElementById('profileContainer');
 
-  // Hide the overlay and remove the blur
-  overlay.classList.add('hide'); // Add the hide class to trigger the transition
+  
+  overlay.classList.add('hide'); 
 
-  // After the transition, hide the overlay completely
+  
   setTimeout(() => {
-      overlay.style.display = 'none'; // Hide the overlay after the transition
-  }, 500); // Match this duration with the CSS transition duration
+      overlay.style.display = 'none'; 
+  }, 500); 
 
   this.style.display = 'none'; 
 
-  // Show the profile container and fade it in
-  profileContainer.style.display = 'block'; // Make it block to apply opacity
+  
+  profileContainer.style.display = 'block'; 
   setTimeout(() => {
-      profileContainer.style.opacity = '1'; // Fade in the profile container
-  }, 10); // Small timeout to ensure display is applied
+      profileContainer.style.opacity = '1'; 
+  }, 10); 
 
   const backgroundMusic = document.getElementById('backgroundMusic');
   backgroundMusic.volume = 0.3; 
   backgroundMusic.play();
 
-  // Show the visitor counter after clicking
-  document.querySelector('.visitor-counter').style.display = 'none'; // Show the visitor counter
+  
+  document.querySelector('.visitor-counter').style.display = 'none'; 
 
   setTimeout(() => {
       profileContainer.classList.add('show'); 
