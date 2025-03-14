@@ -125,9 +125,6 @@ document.getElementById('startView').addEventListener('click', function() {
   backgroundMusic.volume = 0.3; 
   backgroundMusic.play();
 
-  
-  document.querySelector('.visitor-counter').style.display = 'none'; 
-
   setTimeout(() => {
       profileContainer.classList.add('show'); 
   }, 10); 

@@ -78,6 +78,10 @@ body {
 }
 
 .profile-card {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   background-color: rgba(124, 124, 124, 0.8);
   border: 2px solid #b9b6b6; 
   border-radius: 15px;
@@ -138,14 +142,14 @@ body {
   text-align: center;
 }
 .profile-photo {
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
   width: 100px;
   height: 100px;
   border-radius: 50%;
   margin-bottom: 15px;
   object-fit: cover;
-  position: relative;
-  border: 2px solid #b9b6b6;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .profile-photo:hover {
