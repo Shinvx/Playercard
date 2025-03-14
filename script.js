@@ -1,57 +1,97 @@
 let currentCard = null; 
+const backgroundMusic = document.getElementById('backgroundMusic');
+const muteButton = document.getElementById('muteButton');
+const muteIcon = document.getElementById('muteIcon');
+const profileCard = document.querySelector('.profile-card');
+const profilePhoto = document.querySelector('.profile-photo');
+
+profileCard.addEventListener('mousemove', (e) => {
+  const { offsetWidth, offsetHeight } = profileCard;
+  const rect = profileCard.getBoundingClientRect();
+  const x = e.clientX - rect.left; // Mouse X position relative to the card
+  const y = e.clientY - rect.top;  // Mouse Y position relative to the card
+
+  // Calculate the center of the card
+  const centerX = offsetWidth / 2;
+  const centerY = offsetHeight / 2;
+
+  // Calculate the distance from the center
+  const deltaX = (x - centerX) / centerX; // Normalize to -1 to 1
+  const deltaY = (y - centerY) / centerY; // Normalize to -1 to 1
+
+  // Calculate tilt angles
+  const tiltX = deltaY * 10; // Adjust the multiplier for tilt sensitivity
+  const tiltY = -deltaX * 10; // Adjust the multiplier for tilt sensitivity
+
+  // Apply the tilt transformation
+  profileCard.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.05)`; // Scale up while tilting
+  profilePhoto.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+});
+
+// Reset the tilt and scale when the mouse leaves the profile card
+profileCard.addEventListener('mouseleave', () => {
+  profileCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)'; // Reset to original size
+  profilePhoto.style.transform = 'rotateX(0deg) rotateY(0deg)';
+});
 
 
+muteButton.addEventListener('click', function() {
+    if (backgroundMusic.paused) {
+        backgroundMusic.play(); 
+        muteIcon.classList.remove('fa-volume-mute');
+        muteIcon.classList.add('fa-volume-up'); 
+    } else {
+        backgroundMusic.pause(); 
+        muteIcon.classList.remove('fa-volume-up'); 
+        muteIcon.classList.add('fa-volume-mute');
+    }
+});
 const playerCardData = {
     Steam: {
-        imageUrl: 'images/steam.png', // Local image for Steam
+        imageUrl: 'images/steam.png', 
         description: 'Welcome to my Steam profile! Feel free to add me, but no VAC bans.',
         buttonText: 'Steam',
         buttonLink: 'https://steamcommunity.com/id/Sh1nv/'
     },
     RiotGames: {
-        imageUrl: 'images/riot-games-logo.png', // Local image for Riot Games
+        imageUrl: 'images/riot-games-logo.png',
         description: 'Welcome to my Riot Games profile!',
         buttonText: 'Riot Games',
         buttonLink: 'https://shinvx.github.io/riotPage/'
     },
     Tellonym: {
-        imageUrl: 'images/tello.png', // Local image for Tellonym
+        imageUrl: 'images/tello.png',
         description: '',
         buttonText: 'Tellonym',
         buttonLink: 'https://tellonym.me/shinv'
     },
     Instagram: {
-        imageUrl: 'images/insta.png', // Local image for Instagram
+        imageUrl: 'images/insta.png', 
         description: '',
         buttonText: 'Instagram',
         buttonLink: 'https://www.instagram.com/shn.dnie/'
     }
 };
 
-
 function typeEffect(text, delay) {
     let index = 0;
 
-   
     const type = () => {
         if (index < text.length) {
             document.title = text.slice(0, index + 1); 
             index++;
             setTimeout(type, delay); 
         } else {
-           
             setTimeout(remove, 3000);
         }
     };
 
-  
     const remove = () => {
         if (index > 1) {
             document.title = text.slice(0, index - 1); 
             index--;
             setTimeout(remove, delay); 
         } else {
-           
             setTimeout(() => typeEffect(text, delay), 1000); 
         }
     };
@@ -59,47 +99,89 @@ function typeEffect(text, delay) {
     type(); 
 }
 
-
 typeEffect("@SHIN", 300); 
 
-
 document.getElementById('startView').addEventListener('click', function() {
-    document.querySelector('.overlay').style.display = 'none'; 
-    this.style.display = 'none'; 
+  const overlay = document.querySelector('.overlay');
+  const profileContainer = document.getElementById('profileContainer');
 
-    const profileContainer = document.getElementById('profileContainer');
-    profileContainer.style.display = 'block';
+  // Hide the overlay and remove the blur
+  overlay.classList.add('hide'); // Add the hide class to trigger the transition
 
-    const backgroundMusic = document.getElementById('backgroundMusic');
-    backgroundMusic.volume = 0.3; 
-    backgroundMusic.play();
+  // After the transition, hide the overlay completely
+  setTimeout(() => {
+      overlay.style.display = 'none'; // Hide the overlay after the transition
+  }, 500); // Match this duration with the CSS transition duration
 
-    setTimeout(() => {
-        profileContainer.classList.add('show'); 
-    }, 10); 
+  this.style.display = 'none'; 
+
+  // Show the profile container and fade it in
+  profileContainer.style.display = 'block'; // Make it block to apply opacity
+  setTimeout(() => {
+      profileContainer.style.opacity = '1'; // Fade in the profile container
+  }, 10); // Small timeout to ensure display is applied
+
+  const backgroundMusic = document.getElementById('backgroundMusic');
+  backgroundMusic.volume = 0.3; 
+  backgroundMusic.play();
+
+  // Show the visitor counter after clicking
+  document.querySelector('.visitor-counter').style.display = 'none'; // Show the visitor counter
+
+  setTimeout(() => {
+      profileContainer.classList.add('show'); 
+  }, 10); 
 });
 
-document.querySelectorAll('.social-button').forEach(button => {
-    button.addEventListener('click', function(event) {
-        // No need to prevent default since we want to follow the link
-        const platform = this.getAttribute('data-platform');
-        const data = playerCardData[platform];
+const tooltip = document.getElementById('tooltip');
 
-        // Check if data is defined
-        if (!data) {
-            console.error(`No data found for platform: ${platform}`);
-            return; // Exit the function if data is not found
+document.querySelectorAll('.icon').forEach(button => {
+    button.addEventListener('mouseenter', function() {
+        const url = this.getAttribute('data-url');
+        tooltip.textContent = url; 
+        tooltip.style.display = 'block'; 
+        const rect = this.getBoundingClientRect(); 
+        tooltip.style.left = `${rect.left + window.scrollX}px`; 
+        tooltip.style.top = `${rect.bottom + window.scrollY + 5}px`; 
+        tooltip.style.opacity = 1; 
+
+    });
+
+    button.addEventListener('mouseleave', function() {
+        tooltip.style.opacity = 0; 
+        setTimeout(() => {
+            tooltip.style.display = 'none'; 
+        }, 300); 
+
+    });
+
+    button.addEventListener('click', function() {
+        const iconId = Number(this.getAttribute('data-iconId'));
+        let platform = '';
+
+        switch (iconId) {
+            case 0:
+                platform = 'Steam';
+                break;
+            case 1:
+                platform = 'Tellonym';
+                break;
+            case 2:
+                platform = 'Instagram';
+                break;
+            case 3:
+                platform = 'RiotGames';
+                break;
+            default:
+                console.error('No platform found for iconId:', iconId);
+                return;
         }
 
-        // Open the link directly
-        window.open(data.buttonLink, '_blank'); // Open the link in a new tab
+        const data = playerCardData[platform];
+        if (data) {
+            window.open(data.buttonLink, '_blank'); 
+        } else {
+            console.error(`No data found for platform: ${platform}`);
+        }
     });
 });
-
-function openNewCard(newCard) {
-    document.getElementById('playerCardsContainer').appendChild(newCard);
-    setTimeout(() => {
-        newCard.classList.add('show'); 
-        currentCard = newCard; 
-    }, 10); 
-}

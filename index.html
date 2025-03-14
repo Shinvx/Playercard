@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Profile</title>
   <link rel="stylesheet" href="styles.css">
-  
+  <script src="https://countapi.xyz/js/countapi.min.js"></script> <!-- CountAPI Script -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-  <!-- Background Video -->
   <video autoplay muted loop id="backgroundVideo">
     <source src="videoBG.mp4" type="video/mp4"> 
     Your browser does not support the video tag.
@@ -17,41 +17,59 @@
     <source src="songBG.mp3" type="audio/mpeg"> 
     Your browser does not support the audio tag.
   </audio>
+  
   <div id="startView" class="start-view">
     <h1 class="start-text">Click to enter...</h1>
   </div>
 
-  <div class="overlay"></div> <!-- Dark overlay -->
 
-  <div class="profile-container" id="profileContainer" style="display: none;">
+
+  <div class="overlay"></div> <!-- Dark overlay -->
+<div class="profile-container" id="profileContainer" style="display: none; opacity: 0;">
     <div class="profile-card">
         <img src="pic.jpg" alt="Profile Photo" class="profile-photo">
         <h1 class="profile-name">SHIN</h1>
         <p class="profile-description">Software Developer | Tech Enthusiast | Gamer</p>
     </div>
 
+
     <div class="social-buttons">
       <div class="social-button-container">
-          <a href="https://steamcommunity.com/id/Sh1nv/" class="social-button steam" target="_blank" data-platform="Steam">
-              <img src="images/steam.png" alt="Steam" class="social-icon">
-          </a>
-          <a href="https://tellonym.me/shinv" class="social-button tellonym" target="_blank" data-platform="Tellonym">
-              <img src="images/tello.png" alt="Tellonym" class="social-icon">
-          </a>
-          <a href="https://www.instagram.com/shn.dnie/" class="social-button instagram" target="_blank" data-platform="Instagram">
-              <img src="images/insta.png" alt="Instagram" class="social-icon">
-          </a>
+          <div class="icon" id="steam" data-iconId="0" data-url="https://steamcommunity.com/id/Sh1nv/">
+              <img src="images/steam.png" alt="Steam" width="50" height="50" />
+          </div>
+          <div class="icon" id="tellonym" data-iconId="1" data-url="https://tellonym.me/shinv">
+              <img src="images/tello.png" alt="Tellonym" width="50" height="50" />
+          </div>
+          <div class="icon" id="instagram" data-iconId="2" data-url="https://www.instagram.com/shn.dnie/">
+              <img src="images/insta.png" alt="Instagram" width="50" height="50" />
+          </div>
+          <div class="icon" id="riotgames" data-iconId="3" data-url="https://shinvx.github.io/riotPage/">
+              <img src="images/riot.png" alt="Riot Games" width="50" height="50" />
+          </div>
       </div>
-      <a href="riot.html" class="social-button riotgames" target="_blank" data-platform="RiotGames">
-        <img src="images/riot.png" alt="Riot Games" class="social-icon">
-    </a>
-      </a>
+    </div>
+    <div class="tooltip" id="tooltip" style="display: none;"></div>
   </div>
+
+  <div class="visitor-counter" style="display: none;">
+    <h2>Views: <span id="visitorCount">0</span></h2>
 </div>
-
-
+<div class="mute-button" id="muteButton">
+  <i class="fas fa-volume-up" id="muteIcon" style="font-size: 30px;"></i>
+</div>
   <div id="playerCardsContainer" style="display: flex; gap: 20px;"></div>
-
+  
   <script src="script.js"></script>
+  <script>
+      
+      const namespace = 'shinCnting'; 
+
+      
+      countapi.hit(namespace, 'visits').then((result) => {
+          
+          document.getElementById('visitorCount').textContent = result.value;
+      });
+  </script>
 </body>
 </html>
