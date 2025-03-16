@@ -21,43 +21,55 @@
     <h1 class="start-text">Click to enter...</h1>
   </div>
 
-
-
   <div class="overlay"></div>
-<div class="profile-container" id="profileContainer" style="display: none; opacity: 0;">
+  
+  <div class="profile-container" id="profileContainer" style="display: none; opacity: 0;">
     <div class="profile-card">
         <img src="pic.jpg" alt="Profile Photo" class="profile-photo" draggable="false">
         <h1 class="profile-name">SHIN</h1>
         <p class="profile-description">Software Developer | Tech Enthusiast | Gamer</p>
     </div>
-
-
     <div class="social-buttons">
-      <div class="social-button-container">
-          <div class="icon" id="steam" data-iconId="0" data-url="https://steamcommunity.com/id/Sh1nv/">
-              <img src="images/steam.png" alt="Steam" width="50" height="50" draggable="false" />
-          </div>
-          <div class="icon" id="tellonym" data-iconId="1" data-url="https://tellonym.me/shinv">
-              <img src="images/tello.png" alt="Tellonym" width="50" height="50" draggable="false" />
-          </div>
-          <div class="icon" id="instagram" data-iconId="2" data-url="https://www.instagram.com/shn.dnie/">
-              <img src="images/insta.png" alt="Instagram" width="50" height="50" draggable="false" />
-          </div>
-          <div class="icon" id="riotgames" data-iconId="3" data-url="https://shinvx.github.io/riotPage/">
-              <img src="images/riot.png" alt="Riot Games" width="50" height="50" draggable="false" />
+        <div class="social-button-container">
+            <div class="icon" id="steam" data-iconId="0" data-url="https://steamcommunity.com/id/Sh1nv/">
+                <img src="images/steam.png" alt="Steam" width="50" height="50" draggable="false" />
+            </div>
+            <div class="icon" id="tellonym" data-iconId="1" data-url="https://tellonym.me/shinv">
+                <img src="images/tello.png" alt="Tellonym" width="50" height="50" draggable="false" />
+            </div>
+            <div class="icon" id="instagram" data-iconId="2" data-url="https://www.instagram.com/shn.dnie/">
+                <img src="images/insta.png" alt="Instagram" width="50" height="50" draggable="false" />
+            </div>
+            <div class="icon" id="riotgames" data-iconId="3" data-url="https://shinvx.github.io/riotPage/">
+                <img src="images/riot.png" alt="Riot Games" width="50" height="50" draggable="false" />
+              </div>
           </div>
       </div>
+      <div class="tooltip" id="tooltip" style="display: none;"></div>
     </div>
-    <div class="tooltip" id="tooltip" style="display: none;"></div>
-  </div>
-<div class="mute-button" id="muteButton">
-  <i class="fas fa-volume-up" id="muteIcon" style="font-size: 30px;"></i>
-</div>
-  <div id="playerCardsContainer" style="display: flex; gap: 20px;"></div>
+    
+    <nav class="navbar" id="navbar" style="display: none;">
+      <div class="navbar-container">
+        <ul class="navbar-menu">
+          <li><a href="#profile" id="profileLink">Profile</a></li>
+          <li><a href="#games" id="gamesLink">Games</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div id="gamesPage" class="games-page" style="display: none;">
+      <h1 style="color: white;">Games</h1>
+      <p style="color: white;">This Page is under Construction! <br> <br> ~SHIN</p>
+    </div>
   
-  <script src="script.js"></script>
-  <script>
+    <div class="mute-button" id="muteButton">
+      <i class="fas fa-volume-up" id="muteIcon" style="font-size: 30px;"></i>
+    </div>
+    
+    <button id="navbarToggle" class="navbar-toggle" style="display: none;">+</button>
   
-  </script>
-</body>
-</html>
+    <div id="playerCardsContainer" style="display: flex; gap: 20px;"></div>
+    
+    <script src="script.js"></script>
+  </body>
+  </html>

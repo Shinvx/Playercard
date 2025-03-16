@@ -4,11 +4,171 @@ body {
   margin: 0;
   height: 100vh;
   display: flex;
+  flex-direction: column; /* Stack elements vertically */
   justify-content: center;
   align-items: center;
   position: relative; 
 }
 
+/* Background Video */
+#backgroundVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  z-index: -1; /* Behind all other elements */
+}
+
+/* Overlay */
+.overlay {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%; 
+  background-color: rgba(0, 0, 0, 0.85); 
+  backdrop-filter: blur(5px);
+  pointer-events: none; 
+  opacity: 1;
+  transition: opacity 0.5s ease, backdrop-filter 0.5s ease;
+}
+
+/* Profile Container */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.5s ease; /* Fade in effect */
+}
+
+/* Profile Card */
+.profile-card {
+  background-color: rgba(124, 124, 124, 0.8);
+  border: 2px solid #b9b6b6; 
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  max-width: 300px;
+  margin: 20px 0;
+}
+
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  position: absolute; /* Position it absolutely */
+  bottom: 80px; /* Position it above the toggle button */
+  left: 50%; /* Center it horizontally */
+  transform: translateX(-50%) translateY(20px); /* Adjust for the width of the navbar and initial position */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Deeper shadow for depth */
+  z-index: 1000; /* Ensure it stays above other elements */
+  padding: 15px 30px; /* Increased padding for better spacing */
+  display: none; /* Initially hidden */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  transition: transform 0.3s ease; /* Smooth transition for the appearance */
+}
+
+/* Animation for showing the navbar */
+.navbar.show {
+  display: flex; /* Show the navbar */
+  transform: translateX(-50%) translateY(0); /* Move to final position */
+}
+
+.navbar-container {
+  display: flex;
+  flex-direction: column; /* Stack logo above menu */
+  align-items: center; /* Center items horizontally */
+}
+
+.navbar-logo {
+  color: white; /* Logo color */
+  font-size: 28px; /* Increased font size */
+  text-decoration: none;
+  font-weight: bold;
+  animation: glowBreath 2s ease-in-out infinite; /* Breathing glow animation */
+  transition: color 0.3s;
+  margin-bottom: 10px; /* Space between logo and menu */
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  justify-content: center; /* Center the menu items */
+  gap: 20px; /* Space between menu items */
+  padding: 0; /* Remove default padding */
+}
+
+.navbar-menu li {
+  position: relative;
+}
+
+.navbar-menu a {
+  color: white; /* Menu item color */
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.navbar-menu a:hover {
+  color: #ff0062; /* Change color on hover */
+}
+
+.navbar-menu a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #ff0062; /* Underline color */
+  left: 0;
+  bottom: -5px;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.navbar-menu a:hover::after {
+  transform: scaleX(1); /* Show underline on hover */
+}
+@keyframes glowBreath {
+  0%, 100% {
+    color: white; /* White color */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.6);
+    transform: scale(1); /* Normal size */
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8);
+    transform: scale(1.1); /* Slightly larger */
+  }
+}
+
+/* Navbar Toggle Button Styling */
+.navbar-toggle {
+  position: absolute; /* Position it relative to the profile container */
+  bottom: 30px; /* Position it above the bottom of the viewport */
+  left: 50%; /* Center it horizontally */
+  transform: translateX(-50%); /* Adjust for the width of the button */
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 50%; /* Circular shape */
+  width: 60px; /* Width of the button */
+  height: 60px; /* Height of the button */
+  font-size: 24px; /* Font size for the icon */
+  cursor: pointer; /* Pointer cursor on hover */
+  z-index: 1000; /* Ensure it stays above other elements */
+  transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.navbar-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.9); 
+}
+
+/*--------------------------------------------------------------------*/
 #backgroundVideo {
   position: absolute;
   top: 0;
@@ -46,10 +206,10 @@ body {
 
 @keyframes glow {
   0% {
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(0, 128, 255, 0.8), 0 0 20px rgba(0, 128, 255, 0.6);
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 0, 119, 0.8), 0 0 20px rgba(255, 0, 119, 0.6);
   }
   100% {
-      text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(0, 128, 255, 1), 0 0 40px rgba(0, 128, 255, 0.8);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 0, 119, 1), 0 0 40px rgba(255, 0, 119, 0.8);
   }
 }
 .start-view {
