@@ -7,7 +7,6 @@ const profilePhoto = document.querySelector('.profile-photo');
 const navbarToggle = document.getElementById('navbarToggle');
 const navbar = document.getElementById('navbar');
 const gamesPage = document.getElementById('gamesPage');
-const backToProfileButton = document.getElementById('backToProfile');
 
 // Event listener for the mute button
 muteButton.addEventListener('click', function() {
@@ -48,6 +47,7 @@ document.getElementById('startView').addEventListener('click', function() {
     }, 10);
     
     navbar.style.display = 'flex'; // Show the navbar
+    navbarToggle.style.display = 'block'; // Show the toggle button
 });
 
 // Toggle Navbar Visibility
