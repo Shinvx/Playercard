@@ -58,10 +58,19 @@
     </nav>
     
     <div id="gamesPage" class="games-page" style="display: none;">
-      <h1 style="color: white;">Games</h1>
-      <p style="color: white;">This Page is under Construction! <br> <br> ~SHIN</p>
+      <h1 class="games-title">My Games(Under Construction!)</h1>
+      <div id="playerCardsContainer" class="player-cards-container"></div>
     </div>
-  
+
+    <div id="gameInfoCard" class="game-info-card" style="display: none;">
+      <h2 id="gameTitle"></h2>
+      <p><strong>Platform:</strong> <span id="gamePlatform"></span></p>
+      <p><strong>DLC:</strong> <span id="gameDLC"></span></p>
+      <p><strong>Launcher:</strong> <span id="gameLauncher"></span></p>
+      <button id="closeInfoCard">Close</button>
+      
+    </div>
+
     <div class="mute-button" id="muteButton">
       <i class="fas fa-volume-up" id="muteIcon" style="font-size: 30px;"></i>
     </div>
