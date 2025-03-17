@@ -4,13 +4,13 @@ body {
   margin: 0;
   height: 100vh;
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative; 
 }
 
-/* Background Video */
+
 #backgroundVideo {
   position: absolute;
   top: 0;
@@ -18,10 +18,10 @@ body {
   width: 100%; 
   height: 100%; 
   object-fit: cover; 
-  z-index: -1; /* Behind all other elements */
+  z-index: -1;
 }
 
-/* Overlay */
+
 .overlay {
   position: fixed; 
   top: 0;
@@ -35,17 +35,17 @@ body {
   transition: opacity 0.5s ease, backdrop-filter 0.5s ease;
 }
 
-/* Profile Container */
+
 .profile-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  opacity: 0; /* Initially hidden */
-  transition: opacity 0.5s ease; /* Fade in effect */
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
-/* Profile Card */
+
 .profile-card {
   background-color: rgba(124, 124, 124, 0.8);
   border: 2px solid #b9b6b6; 
@@ -59,49 +59,49 @@ body {
 
 
 .navbar {
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  position: absolute; /* Position it absolutely */
-  bottom: 80px; /* Position it above the toggle button */
-  left: 50%; /* Center it horizontally */
-  transform: translateX(-50%) translateY(20px); /* Adjust for the width of the navbar and initial position */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Deeper shadow for depth */
-  z-index: 1000; /* Ensure it stays above other elements */
-  padding: 15px 30px; /* Increased padding for better spacing */
-  display: none; /* Initially hidden */
-  flex-direction: column; /* Stack items vertically */
-  align-items: center; /* Center items horizontally */
-  transition: transform 0.3s ease; /* Smooth transition for the appearance */
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  padding: 15px 30px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
 }
 
-/* Animation for showing the navbar */
+
 .navbar.show {
-  display: flex; /* Show the navbar */
-  transform: translateX(-50%) translateY(0); /* Move to final position */
+  display: flex;
+  transform: translateX(-50%) translateY(0);
 }
 
 .navbar-container {
   display: flex;
-  flex-direction: column; /* Stack logo above menu */
-  align-items: center; /* Center items horizontally */
+  flex-direction: column;
+  align-items: center;
 }
 
 .navbar-logo {
-  color: white; /* Logo color */
-  font-size: 28px; /* Increased font size */
+  color: white;
+  font-size: 28px;
   text-decoration: none;
   font-weight: bold;
-  animation: glowBreath 2s ease-in-out infinite; /* Breathing glow animation */
+  animation: glowBreath 2s ease-in-out infinite;
   transition: color 0.3s;
-  margin-bottom: 10px; /* Space between logo and menu */
+  margin-bottom: 10px;
 }
 
 .navbar-menu {
   list-style: none;
   display: flex;
-  justify-content: center; /* Center the menu items */
-  gap: 20px; /* Space between menu items */
-  padding: 0; /* Remove default padding */
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
 }
 
 .navbar-menu li {
@@ -109,14 +109,14 @@ body {
 }
 
 .navbar-menu a {
-  color: white; /* Menu item color */
+  color: white;
   text-decoration: none;
   font-size: 18px;
   transition: color 0.3s;
 }
 
 .navbar-menu a:hover {
-  color: #ff0062; /* Change color on hover */
+  color: #ff0062;
 }
 
 .navbar-menu a::after {
@@ -124,7 +124,7 @@ body {
   position: absolute;
   width: 100%;
   height: 2px;
-  background: #ff0062; /* Underline color */
+  background: #ff0062;
   left: 0;
   bottom: -5px;
   transform: scaleX(0);
@@ -132,43 +132,43 @@ body {
 }
 
 .navbar-menu a:hover::after {
-  transform: scaleX(1); /* Show underline on hover */
+  transform: scaleX(1);
 }
 @keyframes glowBreath {
   0%, 100% {
-    color: white; /* White color */
+    color: white;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.6);
-    transform: scale(1); /* Normal size */
+    transform: scale(1);
   }
   50% {
     text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8);
-    transform: scale(1.1); /* Slightly larger */
+    transform: scale(1.1);
   }
 }
 
-/* Navbar Toggle Button Styling */
+
 .navbar-toggle {
-  position: absolute; /* Position it relative to the profile container */
-  bottom: 30px; /* Position it above the bottom of the viewport */
-  left: 50%; /* Center it horizontally */
-  transform: translateX(-50%); /* Adjust for the width of the button */
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-  color: white; /* Text color */
-  border: none; /* No border */
-  border-radius: 50%; /* Circular shape */
-  width: 60px; /* Width of the button */
-  height: 60px; /* Height of the button */
-  font-size: 24px; /* Font size for the icon */
-  cursor: pointer; /* Pointer cursor on hover */
-  z-index: 1000; /* Ensure it stays above other elements */
-  transition: background-color 0.3s; /* Smooth background transition */
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s;
 }
 
 .navbar-toggle:hover {
   background-color: rgba(0, 0, 0, 0.9); 
 }
 
-/*--------------------------------------------------------------------*/
+
 #backgroundVideo {
   position: absolute;
   top: 0;
@@ -327,12 +327,14 @@ body {
 }
 
 .social-button-container {
+  text-decoration: none;
   display: flex;
   gap: 15px;
 }
 
 .icon {
   cursor: pointer;
+  text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -343,7 +345,6 @@ body {
   transition: transform 0.2s ease, box-shadow 0.3s ease;
   position: relative;
 }
-
 .icon:hover {
   transform: rotate(360deg) scale(0.8);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
@@ -353,14 +354,17 @@ body {
 
 
 .icon {
+  text-decoration: none;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 
                0 0 10px rgba(255, 255, 255, 0.3), 
                0 0 15px rgba(255, 255, 255, 0.1);
 }
 .icon img {
+  text-decoration: none;
   width: 70%;
   height: auto;
 }
+
 
 .mute-button {
   position: fixed;
@@ -369,78 +373,78 @@ body {
   cursor: pointer;
   z-index: 100;
 }
-/*---------GamePage------------------------------------*/
+
 games-page {
-  display: flex; /* Use flexbox for layout */
-  flex-direction: row; /* Align items in a row */
-  align-items: flex-start; /* Align items to the start */
-  overflow-y: hidden; /* Hide vertical scrollbar */
-  height: 100vh; /* Full height */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  overflow-y: hidden;
+  height: 100vh;
   padding: 20px;
 }
 .games-title {
-  color: white; /* Title color */
-  text-align: center; /* Center the text */
-  margin-bottom: 20px; /* Space below the title */
-  font-size: 2rem; /* Adjust font size as needed */
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
 }
 
 .player-cards-container {
-  display: grid; /* Use grid layout */
-  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
-  gap: 20px; /* Space between cards */
-  overflow-y: auto; /* Allow vertical scrolling if needed */
-  width: 100%; /* Set width to 100% to fit the parent container */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  overflow-y: auto;
+  width: 100%;
   padding: 10px;
-  max-height: calc(100vh - 100px); /* Adjust height to fit within the viewport */
-  box-sizing: border-box; /* Include padding in width calculation */
+  max-height: calc(100vh - 100px);
+  box-sizing: border-box;
 }
-/* Custom Scrollbar for WebKit Browsers (Chrome, Safari) */
+
 .player-cards-container::-webkit-scrollbar {
-  width: 12px; /* Width of the scrollbar */
+  width: 12px;
 }
 
 .player-cards-container::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1); /* Background of the scrollbar track */
-  border-radius: 10px; /* Rounded corners for the track */
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 .player-cards-container::-webkit-scrollbar-thumb {
-  background: rgba(255, 0, 98, 0.8); /* Color of the scrollbar thumb */
-  border-radius: 10px; /* Rounded corners for the thumb */
+  background: rgba(255, 0, 98, 0.8);
+  border-radius: 10px;
 }
 
 .player-cards-container::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 0, 98, 1); /* Darker color on hover */
+  background: rgba(255, 0, 98, 1);
 }
 
-/* Custom Scrollbar for Firefox */
+
 .player-cards-container {
-  scrollbar-width: thin; /* Use a thin scrollbar */
-  scrollbar-color: rgba(255, 0, 98, 0.8) rgba(0, 0, 0, 0.1); /* Thumb color and track color */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 0, 98, 0.8) rgba(0, 0, 0, 0.1);
 }
 
-/* Optional: For Edge and IE */
+
 .player-cards-container {
-  -ms-overflow-style: -ms-autohiding-scrollbar; /* Hide scrollbar when not in use */
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 1200px) {
   .player-cards-container {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 900px) {
   .player-cards-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for small screens */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
   .player-cards-container {
-    grid-template-columns: 1fr; /* 1 column for extra small screens */
+    grid-template-columns: 1fr;
   }
 }
 
@@ -449,28 +453,28 @@ games-page {
   border: 2px solid #b9b6b6;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 10px; /* Reduced padding */
+  padding: 10px;
   text-align: center;
   transition: transform 0.2s ease;
-  user-select: none; /* Prevent text selection */
-  max-width: 150px; /* Set a maximum width for the player card */
-  margin: 0 auto; /* Center the card */
+  user-select: none;
+  max-width: 150px;
+  margin: 0 auto;
 }
 
 .player-card img {
-  width: 100%; /* Responsive image */
-  border-radius: 10px; /* Rounded corners */
+  width: 100%;
+  border-radius: 10px;
 }
 
 .player-card h2 {
-  font-size: 1rem; /* Adjust font size for titles */
-  color: white; /* Title color */
+  font-size: 1rem;
+  color: white;
 }
 
 
 
 .player-card:hover {
-  transform: scale(1.05); /* Scale effect on hover */
+  transform: scale(1.05);
 }
 
 .game-info-card {
@@ -482,7 +486,7 @@ games-page {
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   padding: 20px;
-  z-index: 1000; /* Ensure it appears above other elements */
+  z-index: 1000;
   text-align: center;
 }
 
