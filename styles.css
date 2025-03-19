@@ -242,8 +242,8 @@ body {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  background-color: rgba(124, 124, 124, 0.8);
-  border: 2px solid #b9b6b6; 
+  background-color: rgba(255, 0, 0, 0.1);
+  border: 2px solid #ff0000; 
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -257,35 +257,35 @@ body {
   transform: scale(1.05);
 }
 .profile-card:hover {
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
-              0 0 30px rgba(255, 255, 255, 0.6), 
-              0 0 40px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), /* Red glow */
+  0 0 30px rgba(255, 0, 0, 0.6), /* Red glow */
+  0 0 40px rgba(255, 0, 0, 0.4); /* Red glow */
 }
 @keyframes glowi {
   0% {
-      text-shadow: 0 0 10px rgba(255, 255, 255, 1), 
-                   0 0 20px rgba(255, 255, 255, 0.8), 
-                   0 0 30px rgba(255, 255, 255, 0.6);
+      text-shadow: 0 0 10px rgba(255, 0, 0, 1), 
+                   0 0 20px rgba(255, 0, 0, 0.8), 
+                   0 0 30px rgba(255, 0, 0, 0.6);
   }
   25% {
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 
-                   0 0 10px rgba(255, 255, 255, 0.3), 
-                   0 0 15px rgba(255, 255, 255, 0.1);
+      text-shadow: 0 0 5px rgba(255, 0, 0, 0.5), 
+                   0 0 10px rgba(255, 0, 0, 0.3), 
+                   0 0 15px rgba(255, 0, 0, 0.1);
   }
   50% {
-      text-shadow: 0 0 0 rgba(255, 255, 255, 0), 
-                   0 0 0 rgba(255, 255, 255, 0), 
-                   0 0 0 rgba(255, 255, 255, 0);
+      text-shadow: 0 0 0 rgba(255, 0, 0, 0), 
+                   0 0 0 rgba(255, 0, 0, 0), 
+                   0 0 0 rgba(255, 0, 0, 0);
   }
   75% {
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 
-                   0 0 10px rgba(255, 255, 255, 0.3), 
-                   0 0 15px rgba(255, 255, 255, 0.1);
+      text-shadow: 0 0 5px rgba(255, 0, 0, 0.5), 
+                   0 0 10px rgba(255, 0, 0, 0.3), 
+                   0 0 15px rgba(255, 0, 0, 0.1);
   }
   100% {
-      text-shadow: 0 0 10px rgba(255, 255, 255, 1), 
-                   0 0 20px rgba(255, 255, 255, 0.8), 
-                   0 0 30px rgba(255, 255, 255, 0.6);
+      text-shadow: 0 0 10px rgba(255, 0, 0, 1), 
+                   0 0 20px rgba(255, 0, 0, 0.8), 
+                   0 0 30px rgba(255, 0, 0, 0.6);
   }
 }
 
@@ -300,6 +300,7 @@ body {
   color: white;
   font-size: 16px;
   text-align: center;
+  animation: glowi 4s infinite;
 }
 .profile-photo {
   -webkit-user-drag: none;
@@ -341,23 +342,23 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 0, 0, 0.2);
   transition: transform 0.2s ease, box-shadow 0.3s ease;
   position: relative;
 }
 .icon:hover {
   transform: rotate(360deg) scale(0.8);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
-              0 0 20px rgba(255, 255, 255, 0.6), 
-              0 0 30px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.8),
+              0 0 20px rgba(255, 0, 0, 0.6), 
+              0 0 30px rgba(255, 0, 0, 0.4);
 }
 
 
 .icon {
   text-decoration: none;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 
-               0 0 10px rgba(255, 255, 255, 0.3), 
-               0 0 15px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.5), 
+               0 0 10px rgba(255, 0, 0, 0.3), 
+               0 0 15px rgba(255, 0, 0, 0.1);
 }
 .icon img {
   text-decoration: none;
@@ -486,6 +487,7 @@ body {
 }
 
 .search-bar {
+  color: white;
   position: fixed; /* Fixed positioning */
   top: 20px; /* Distance from the top */
   right: 20px; /* Distance from the right */
@@ -493,7 +495,7 @@ body {
   width: 250px; /* Width of the search bar */
   border-radius: 5px; /* Rounded corners */
   border: 1px solid #ccc; /* Border color */
-  background-color: rgba(255, 255, 255, 0.8); /* Background color */
+  background-color: rgba(255, 0, 0, 0.1); /* Background color */
   font-size: 16px; /* Font size */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
   transition: border-color 0.3s; /* Transition for border color */
@@ -512,16 +514,16 @@ body {
 }
 .player-card {
   position: relative; /* Make the card a positioned element */
-  background-color: rgba(124, 124, 124, 0.8);
-  border: 2px solid #b9b6b6;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  text-align: center;
-  transition: transform 0.2s ease;
-  user-select: none;
-  max-width: 150px;
-  margin: 0 auto;
+  background-color: rgba(255, 0, 0, 0.1); /* Change to transparent red */
+  border: 2px solid #fd0000; /* Keep the original border */
+  border-radius: 15px; /* Keep the original border radius */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Keep the original shadow */
+  padding: 10px; /* Keep the original padding */
+  text-align: center; /* Keep the original text alignment */
+  transition: transform 0.2s ease; /* Keep the original transition */
+  user-select: none; /* Keep the original user-select property */
+  max-width: 150px; /* Keep the original max-width */
+  margin: 0 auto; /* Keep the original margin */
 }
 
 .logo-container {
