@@ -58,18 +58,32 @@
     </nav>
     
     <div id="gamesPage" class="games-page" style="display: none;">
-      <h1 class="games-title">My Games(Under Construction!)</h1>
+      <div class="button-container">
+          <button id="searchButton" class="search-button">
+              <i class="fas fa-search"></i>
+          </button>
+          <input type="text" id="searchBar" placeholder="Search for a game..." class="search-bar" style="display: none;">
+          
+          <button id="searchByPlatform" class="search-button">
+              <i class="fas fa-gamepad"></i>
+          </button>
+          <button id="searchByAlphabet" class="search-button">
+              <i class="fas fa-sort-alpha-down"></i>
+          </button>
+      </div>
+      
+      <h1 class="games-title">My Games (Under Construction!)</h1>
       <div id="playerCardsContainer" class="player-cards-container"></div>
-    </div>
-
-    <div id="gameInfoCard" class="game-info-card" style="display: none;">
+  </div>
+  
+  <div id="gameInfoCard" class="game-info-card" style="display: none;">
       <h2 id="gameTitle"></h2>
+      <img id="gameImage" src="" alt="Game Image" style="width: 300px; border-radius: 10px;">
       <p><strong>Platform:</strong> <span id="gamePlatform"></span></p>
       <p><strong>DLC:</strong> <span id="gameDLC"></span></p>
       <p><strong>Launcher:</strong> <span id="gameLauncher"></span></p>
       <button id="closeInfoCard">Close</button>
-      
-    </div>
+  </div>
 
     <div class="mute-button" id="muteButton">
       <i class="fas fa-volume-up" id="muteIcon" style="font-size: 30px;"></i>
